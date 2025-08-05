@@ -524,7 +524,7 @@ class ComponentCache(SingletonConfigurable):
             components.extend(list(catalog_properties.get("components", {}).values()))
 
         if not components and platform != RuntimeProcessorType.LOCAL:
-            self.log.error(f"No components -> platform type '{platform.name}'. components: {components}")
+            self.log.error(f"platform type: '{platform.name}' components: {components} catalogs: {catalogs}")
 
         return components
 
