@@ -520,9 +520,11 @@ class ComponentCache(SingletonConfigurable):
         components: List[Component] = []
 
         catalogs = self._component_cache.get(platform.name, {})
+
         for catalog_name, catalog_properties in catalogs.items():
             components.extend(list(catalog_properties.get("components", {}).values()))
 
+        self.log.error(f"'{platform.name}' = '{RuntimeProcessorType.LOCAL.name}'")
         if not components and platform != RuntimeProcessorType.LOCAL:
             self.log.error(f"name: '{platform.name}' _component_cache: {self._component_cache}")
 
